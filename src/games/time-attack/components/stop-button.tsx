@@ -1,0 +1,56 @@
+import { Button } from '@/components/ui/button';
+import { Play, Square, RotateCcw } from 'lucide-react';
+
+interface StopButtonProps {
+  isRunning: boolean;
+  onStart: () => void;
+  onStop: () => void;
+  onReset: () => void;
+  canReset: boolean;
+}
+
+export default function StopButton({ 
+  isRunning, 
+  onStart, 
+  onStop, 
+  onReset,
+  canReset 
+}: StopButtonProps) {
+  return (
+    <div className="flex gap-4 justify-center">
+      {!isRunning && (
+        <Button
+          onClick={onStart}
+          size="lg"
+          className="min-w-[150px]"
+        >
+          <Play className="mr-2 h-5 w-5" />
+          Başlat
+        </Button>
+      )}
+
+      {isRunning && (
+        <Button
+          onClick={onStop}
+          size="lg"
+          variant="destructive"
+          className="min-w-[150px]"
+        >
+          <Square className="mr-2 h-5 w-5" />
+          Durdur
+        </Button>
+      )}
+
+      {canReset && !isRunning && (
+        <Button
+          onClick={onReset}
+          size="lg"
+          variant="outline"
+        >
+          <RotateCcw className="mr-2 h-5 w-5" />
+          Sıfırla
+        </Button>
+      )}
+    </div>
+  );
+}
