@@ -22,10 +22,10 @@ export default function StopButton({
         <Button
           onClick={onStart}
           size="lg"
-          className="min-w-[150px]"
+          className="min-w-[180px] text-xs uppercase tracking-widest"
         >
           <Play className="mr-2 h-5 w-5" />
-          Başlat
+          ▶ START
         </Button>
       )}
 
@@ -34,10 +34,10 @@ export default function StopButton({
           onClick={onStop}
           size="lg"
           variant="destructive"
-          className="min-w-[150px]"
+          className="min-w-[180px] text-xs uppercase tracking-widest animate-pulse"
         >
           <Square className="mr-2 h-5 w-5" />
-          Durdur
+          ■ STOP
         </Button>
       )}
 
@@ -46,9 +46,10 @@ export default function StopButton({
           onClick={onReset}
           size="lg"
           variant="outline"
+          className="text-xs uppercase tracking-widest"
         >
           <RotateCcw className="mr-2 h-5 w-5" />
-          Sıfırla
+          ↻ RESET
         </Button>
       )}
     </div>

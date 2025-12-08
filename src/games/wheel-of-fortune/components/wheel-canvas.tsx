@@ -61,15 +61,15 @@ export default function WheelCanvas({ segments, currentAngle, size = 400 }: Whee
   }, [segments, currentAngle, size]);
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center p-4">
       <canvas
         ref={canvasRef}
         width={size}
         height={size}
-        className="rounded-full shadow-lg"
+        className="pixel-corners retro-shadow border-4 border-primary"
       />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2">
-        <div className="w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[25px] border-t-primary" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 animate-bounce">
+        <div className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-primary" />
       </div>
     </div>
   );

@@ -14,12 +14,12 @@ export default function ErrorMessage({
   className,
 }: ErrorMessageProps) {
   return (
-    <Card className={cn('border-destructive', className)}>
+    <Card className={cn('border-4 border-destructive', className)}>
       <CardContent className="flex items-start gap-3 pt-6">
-        <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+        <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5 animate-pulse" />
         <div className="flex-1 space-y-1">
-          <h3 className="font-semibold text-destructive">{title}</h3>
-          <p className="text-sm text-muted-foreground">{message}</p>
+          <h3 className="font-semibold text-destructive text-xs uppercase tracking-widest">▼ ERROR ▼</h3>
+          <p className="text-[10px] text-muted-foreground uppercase">{message}</p>
         </div>
       </CardContent>
     </Card>

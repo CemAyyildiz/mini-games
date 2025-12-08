@@ -10,9 +10,9 @@ interface ScoreDisplayProps {
 }
 
 const SIZE_CLASSES = {
-  sm: 'text-2xl',
-  md: 'text-4xl',
-  lg: 'text-6xl',
+  sm: 'text-xl',
+  md: 'text-3xl',
+  lg: 'text-5xl',
 };
 
 export default function ScoreDisplay({
@@ -22,10 +22,10 @@ export default function ScoreDisplay({
   className,
 }: ScoreDisplayProps) {
   return (
-    <Card className={cn('text-center', className)}>
+    <Card className={cn('text-center border-4 border-primary', className)}>
       <CardContent className="pt-6">
-        <p className="text-sm text-muted-foreground mb-2">{label}</p>
-        <p className={cn('font-bold text-primary', SIZE_CLASSES[size])}>
+        <p className="text-[10px] text-muted-foreground mb-2 uppercase tracking-widest">{label}</p>
+        <p className={cn('font-bold text-primary tabular-nums animate-pulse pixel-corners border-2 border-primary inline-block px-4 py-2', SIZE_CLASSES[size])}>
           {formatScore(score)}
         </p>
       </CardContent>

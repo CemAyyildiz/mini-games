@@ -15,20 +15,20 @@ export default function GameLayout({ children, title, description }: GameLayoutP
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold">{title}</h1>
+          <h1 className="text-xl font-bold uppercase tracking-widest text-primary">► {title}</h1>
           {description && (
-            <p className="text-muted-foreground">{description}</p>
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{description}</p>
           )}
         </div>
         <Link to={ROUTES.HOME}>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="text-xs uppercase tracking-wider">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Ana Sayfa
+            ◄ BACK
           </Button>
         </Link>
       </div>
 
-      <div className="rounded-lg border bg-card p-6">
+      <div className="border-4 bg-card p-8 pixel-corners retro-shadow">
         {children}
       </div>
     </div>

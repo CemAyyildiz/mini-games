@@ -16,14 +16,14 @@ export default function ResultPanel({ result, bestAccuracy, attempts }: ResultPa
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="border-4">
         <CardHeader>
-          <CardTitle className="flex items-center justify-between">
-            <span>Son Sonuç</span>
+          <CardTitle className="flex items-center justify-between text-xs uppercase tracking-widest">
+            <span>◆ LAST RESULT ◆</span>
             <Badge 
               variant={result.isSuccess ? 'default' : 'secondary'}
               style={{ backgroundColor: accuracyLevel.color }}
-              className="text-white"
+              className="text-white uppercase tracking-wider"
             >
               {accuracyLevel.label}
             </Badge>
@@ -31,40 +31,40 @@ export default function ResultPanel({ result, bestAccuracy, attempts }: ResultPa
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <p className="text-sm text-muted-foreground">Süreniz</p>
-              <p className="text-2xl font-bold">{formatTime(result.stoppedTime)}</p>
+            <div className="pixel-corners border-2 border-primary p-3 bg-primary/5">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">YOUR TIME</p>
+              <p className="text-xl font-bold">{formatTime(result.stoppedTime)}</p>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">Fark</p>
-              <p className="text-2xl font-bold">{formatTime(result.difference)}</p>
+            <div className="pixel-corners border-2 border-secondary p-3 bg-secondary/5">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">DIFF</p>
+              <p className="text-xl font-bold">{formatTime(result.difference)}</p>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">İsabetlilik</p>
-              <p className="text-2xl font-bold">{formatPercentage(result.accuracy)}</p>
+            <div className="pixel-corners border-2 border-accent p-3 bg-accent/5">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">ACCURACY</p>
+              <p className="text-xl font-bold">{formatPercentage(result.accuracy)}</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
       <div className="grid grid-cols-2 gap-4">
-        <Card>
+        <Card className="border-4 border-primary">
           <CardHeader>
-            <CardTitle className="text-lg">En İyi İsabetlilik</CardTitle>
+            <CardTitle className="text-xs uppercase tracking-widest">★ BEST SCORE ★</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-primary">
+            <p className="text-2xl font-bold text-primary animate-pulse">
               {formatPercentage(bestAccuracy)}
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-4 border-secondary">
           <CardHeader>
-            <CardTitle className="text-lg">Deneme Sayısı</CardTitle>
+            <CardTitle className="text-xs uppercase tracking-widest">• ATTEMPTS •</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-primary">
+            <p className="text-2xl font-bold text-primary">
               {attempts}
             </p>
           </CardContent>

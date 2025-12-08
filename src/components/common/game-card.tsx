@@ -22,30 +22,30 @@ const DIFFICULTY_LABELS = {
 
 export default function GameCard({ game, className }: GameCardProps) {
   return (
-    <Link to={game.path} className="block">
+    <Link to={game.path} className="block group">
       <Card
         className={cn(
-          'hover:shadow-lg transition-shadow cursor-pointer h-full',
+          'hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all cursor-pointer h-full border-4',
           !game.isActive && 'opacity-60 cursor-not-allowed',
           className
         )}
       >
         <CardHeader>
           <div className="flex items-start justify-between gap-4">
-            <div className="text-4xl">{game.icon}</div>
+            <div className="text-5xl animate-bounce">{game.icon}</div>
             <Badge
               variant="secondary"
-              className={cn('text-white', DIFFICULTY_COLORS[game.difficulty])}
+              className={cn('text-white border-2', DIFFICULTY_COLORS[game.difficulty])}
             >
               {DIFFICULTY_LABELS[game.difficulty]}
             </Badge>
           </div>
-          <CardTitle className="mt-4">{game.name}</CardTitle>
-          <CardDescription>{game.description}</CardDescription>
+          <CardTitle className="mt-4 text-sm uppercase tracking-wider">{game.name}</CardTitle>
+          <CardDescription className="text-[10px] uppercase">{game.description}</CardDescription>
         </CardHeader>
         <CardContent>
           {!game.isActive && (
-            <p className="text-sm text-muted-foreground italic">Yakında...</p>
+            <p className="text-[10px] text-muted-foreground italic uppercase tracking-widest">[ COMING SOON ]</p>
           )}
         </CardContent>
       </Card>

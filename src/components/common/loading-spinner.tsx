@@ -7,7 +7,7 @@ interface LoadingSpinnerProps {
 
 const SIZE_CLASSES = {
   sm: 'h-4 w-4 border-2',
-  md: 'h-8 w-8 border-3',
+  md: 'h-8 w-8 border-4',
   lg: 'h-12 w-12 border-4',
 };
 
@@ -16,14 +16,14 @@ export default function LoadingSpinner({ size = 'md', className }: LoadingSpinne
     <div className="flex items-center justify-center">
       <div
         className={cn(
-          'animate-spin rounded-full border-primary border-t-transparent',
+          'animate-spin border-primary border-t-transparent pixel-corners',
           SIZE_CLASSES[size],
           className
         )}
         role="status"
-        aria-label="Yükleniyor"
+        aria-label="Yüklüyor"
       >
-        <span className="sr-only">Yükleniyor...</span>
+        <span className="sr-only">LOADING...</span>
       </div>
     </div>
   );

@@ -36,16 +36,16 @@ export default function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-[280px] border-r bg-card">
+    <aside className="fixed left-0 top-0 h-screen w-[280px] border-r-4 bg-card pixel-corners">
       <div className="flex h-full flex-col">
-        <div className="flex h-16 items-center border-b px-6">
-          <Link to={ROUTES.HOME} className="flex items-center gap-2">
+        <div className="flex h-16 items-center border-b-4 px-6 bg-primary/10">
+          <Link to={ROUTES.HOME} className="flex items-center gap-2 hover:scale-105 transition-transform">
             <Gamepad2 className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">Mini Games</span>
+            <span className="text-sm font-bold text-primary">MINI GAMES</span>
           </Link>
         </div>
 
-        <nav className="flex-1 space-y-1 p-4">
+        <nav className="flex-1 space-y-2 p-4">
           {NAV_ITEMS.map((item) => {
             const isActive = location.pathname === item.path;
             
@@ -54,22 +54,22 @@ export default function Sidebar() {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+                  'flex items-center gap-3 px-4 py-3 text-xs font-medium transition-all pixel-corners uppercase tracking-wider',
                   isActive
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    ? 'bg-primary text-primary-foreground retro-shadow'
+                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-1'
                 )}
               >
                 {item.icon}
-                {item.label}
+                <span className="text-[10px]">{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="border-t p-4">
-          <p className="text-xs text-muted-foreground text-center">
-            © 2025 Mini Games
+        <div className="border-t-4 p-4 bg-primary/5">
+          <p className="text-[8px] text-muted-foreground text-center uppercase tracking-widest">
+            © 2025 MINI GAMES
           </p>
         </div>
       </div>

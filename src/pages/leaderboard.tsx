@@ -38,45 +38,47 @@ const RANK_ICONS = {
 export default function Leaderboard() {
   return (
     <div className="space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold">Lider Tablosu</h1>
-        <p className="text-muted-foreground">
-          En yüksek skorlara sahip oyuncular
+      <div className="space-y-2 text-center">
+        <h1 className="text-2xl font-bold uppercase tracking-widest animate-pulse text-primary">
+          ★★ HIGH SCORES ★★
+        </h1>
+        <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
+          [ TOP PLAYERS ]
         </p>
       </div>
 
-      <Card>
+      <Card className="border-4">
         <CardHeader>
-          <CardTitle>Tüm Zamanlar</CardTitle>
+          <CardTitle className="text-sm uppercase tracking-widest text-center">◆ ALL TIME ◆</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {MOCK_LEADERBOARD.map((entry) => (
               <div
                 key={entry.id}
-                className="flex items-center justify-between p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+                className="flex items-center justify-between p-4 border-2 bg-card hover:bg-accent transition-all pixel-corners hover:translate-x-1"
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10">
+                  <div className="flex items-center justify-center w-12 pixel-corners border-2 border-primary p-2 bg-primary/10">
                     {entry.rank <= 3 ? (
                       RANK_ICONS[entry.rank as keyof typeof RANK_ICONS]
                     ) : (
-                      <span className="text-xl font-bold text-muted-foreground">
-                        {entry.rank}
+                      <span className="text-sm font-bold text-muted-foreground">
+                        #{entry.rank}
                       </span>
                     )}
                   </div>
                   <div>
-                    <p className="font-semibold">{entry.username}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="font-semibold text-xs uppercase tracking-wider">{entry.username}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
                       {entry.gameId === 'wheel-of-fortune'
-                        ? 'Çark-ı Felek'
-                        : 'Zaman Saldırısı'}
+                        ? '► WHEEL'
+                        : '► TIME ATTACK'}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <Badge variant="secondary" className="text-lg font-bold">
+                  <Badge variant="secondary" className="text-sm font-bold px-4 py-1 pixel-corners border-2 border-primary bg-primary/20">
                     {entry.score.toLocaleString('tr-TR')}
                   </Badge>
                 </div>

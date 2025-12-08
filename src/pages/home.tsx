@@ -25,11 +25,13 @@ const GAMES: BaseGame[] = [
 
 export default function Home() {
   return (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-4xl font-bold">Mini Games</h1>
-        <p className="text-lg text-muted-foreground">
-          Eğlenceli mini oyunlar oyna, skorlarını geliştir!
+    <div className="space-y-8">
+      <div className="space-y-4 text-center">
+        <h1 className="text-2xl font-bold uppercase tracking-widest animate-pulse text-primary">
+          ►► MINI GAMES ARCADE ◄◄
+        </h1>
+        <p className="text-xs text-muted-foreground uppercase tracking-wider">
+          [ INSERT COIN TO START ]
         </p>
       </div>
 

@@ -32,12 +32,12 @@ export default function WheelOfFortune() {
       </div>
 
       {selectedSegment && !isSpinning && (
-        <div className="text-center space-y-2">
-          <p className="text-2xl font-bold text-primary">
-            🎉 Tebrikler!
+        <div className="text-center space-y-2 animate-bounce">
+          <p className="text-xl font-bold text-primary uppercase tracking-widest">
+            ►► YOU WIN! ◄◄
           </p>
-          <p className="text-lg">
-            {selectedSegment.prizeValue} ₺ kazandınız!
+          <p className="text-sm uppercase tracking-wider">
+            + {selectedSegment.prizeValue} ₺
           </p>
         </div>
       )}

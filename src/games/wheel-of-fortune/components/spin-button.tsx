@@ -12,9 +12,9 @@ export default function SpinButton({ onSpin, isSpinning }: SpinButtonProps) {
         onClick={onSpin}
         disabled={isSpinning}
         size="lg"
-        className="min-w-[200px]"
+        className="min-w-[250px] text-xs uppercase tracking-widest animate-pulse"
       >
-        {isSpinning ? 'Çevriliyor...' : 'Çarkı Çevir!'}
+        {isSpinning ? '►► ÇEVRİLİYOR... ◄◄' : '▶ ÇARKI ÇEVİR!'}
       </Button>
     </div>
   );
