@@ -21,7 +21,7 @@ export default function ChronometerDisplay({ currentTime, isRunning }: Chronomet
 
       <div className={cn(
         'text-7xl font-bold tabular-nums transition-all pixel-corners border-8 inline-block px-8 py-6',
-        isRunning ? 'text-primary animate-pulse border-primary bg-primary/10' : 'text-foreground border-muted'
+        isRunning ? 'text-primary border-primary bg-primary/10' : 'text-foreground border-muted'
       )}>
         {formatTime(currentTime)}
       </div>

@@ -34,7 +34,7 @@ export default function StopButton({
           onClick={onStop}
           size="lg"
           variant="destructive"
-          className="min-w-[180px] text-xs uppercase tracking-widest animate-pulse"
+          className="min-w-[180px] text-xs uppercase tracking-widest"
         >
           <Square className="mr-2 h-5 w-5" />
           ■ STOP
