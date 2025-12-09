@@ -18,10 +18,41 @@ const RANK_ICONS = {
 
 export default function GameLeaderboard({ gameId, currentScore }: GameLeaderboardProps) {
   const [scores, setScores] = useState<LeaderboardEntry[]>([]);
+  const [updateTrigger, setUpdateTrigger] = useState(0);
 
   useEffect(() => {
     setScores(getGameLeaderboard(gameId, 5));
-  }, [gameId, currentScore]);
+  }, [gameId, currentScore, updateTrigger]);
+
+  useEffect(() => {
+    // Listen for storage changes from other tabs/windows
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key?.includes('leaderboard')) {
+        setUpdateTrigger(prev => prev + 1);
+      }
+    };
+
+    // Also update when this component mounts or when visible
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setUpdateTrigger(prev => prev + 1);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Poll for updates every 2 seconds
+    const interval = setInterval(() => {
+      setUpdateTrigger(prev => prev + 1);
+    }, 2000);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearInterval(interval);
+    };
+  }, []);
 
   if (scores.length === 0) {
     return (

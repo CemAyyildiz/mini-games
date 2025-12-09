@@ -47,11 +47,11 @@ export const TIME_ATTACK_CONFIG = {
 } as const;
 
 export const TIME_ATTACK_ACCURACY_LEVELS = {
-  PERFECT: { threshold: 10, label: 'Mükemmel!', color: '#10B981' },
-  EXCELLENT: { threshold: 50, label: 'Harika!', color: '#3B82F6' },
-  GOOD: { threshold: 100, label: 'İyi!', color: '#8B5CF6' },
-  FAIR: { threshold: 200, label: 'Fena Değil', color: '#F59E0B' },
-  POOR: { threshold: Infinity, label: 'Tekrar Dene', color: '#EF4444' },
+  PERFECT: { threshold: 10, label: 'Perfect!', color: '#10B981' },
+  EXCELLENT: { threshold: 50, label: 'Excellent!', color: '#3B82F6' },
+  GOOD: { threshold: 100, label: 'Good!', color: '#8B5CF6' },
+  FAIR: { threshold: 200, label: 'Fair', color: '#F59E0B' },
+  POOR: { threshold: Infinity, label: 'Try Again', color: '#EF4444' },
 } as const;
 
 // Make-Ten constants

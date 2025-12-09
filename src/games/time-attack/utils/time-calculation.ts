@@ -19,8 +19,10 @@ export function isSuccess(stoppedTime: number): boolean {
 }
 
 export function getAccuracyLevel(difference: number) {
+  const absDifference = Math.abs(difference);
+  
   for (const [key, level] of Object.entries(TIME_ATTACK_ACCURACY_LEVELS)) {
-    if (difference <= level.threshold) {
+    if (absDifference <= level.threshold) {
       return level;
     }
   }
