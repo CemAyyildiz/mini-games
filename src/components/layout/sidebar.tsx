@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Gamepad2, Trophy, Timer, X } from 'lucide-react';
+import { Home, Gamepad2, Trophy, Timer, X, Hash } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { ROUTES } from '@/lib/constants/routes';
 
@@ -29,6 +29,11 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Time Attack',
     path: ROUTES.TIME_ATTACK,
     icon: <Timer className="h-5 w-5" />,
+  },
+  {
+    label: 'Make Ten',
+    path: ROUTES.MAKE_TEN,
+    icon: <Hash className="h-5 w-5" />,
   },
   {
     label: 'Leaderboard',

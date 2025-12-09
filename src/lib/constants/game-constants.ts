@@ -3,6 +3,7 @@
 export const GAME_IDS = {
   WHEEL_OF_FORTUNE: 'wheel-of-fortune',
   TIME_ATTACK: 'time-attack',
+  MAKE_TEN: 'make-ten',
 } as const;
 
 export const GAME_STATUS = {
@@ -51,4 +52,14 @@ export const TIME_ATTACK_ACCURACY_LEVELS = {
   GOOD: { threshold: 100, label: 'İyi!', color: '#8B5CF6' },
   FAIR: { threshold: 200, label: 'Fena Değil', color: '#F59E0B' },
   POOR: { threshold: Infinity, label: 'Tekrar Dene', color: '#EF4444' },
+} as const;
+
+// Make-Ten constants
+export const MAKE_TEN_CONFIG = {
+  GRID_SIZE: 10,
+  TIMER_DURATION: 60000, // 60 seconds
+  POINTS_PER_MATCH: 10,
+  COMBO_MULTIPLIER: 1.5,
+  MIN_NUMBER: 0,
+  MAX_NUMBER: 9,
 } as const;

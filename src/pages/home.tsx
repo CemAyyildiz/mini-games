@@ -21,6 +21,15 @@ const GAMES: BaseGame[] = [
     difficulty: 'medium',
     isActive: true,
   },
+  {
+    id: GAME_IDS.MAKE_TEN,
+    name: 'Make Ten',
+    description: 'Match adjacent numbers that add up to 10. Fast-paced puzzle action!',
+    icon: '🔢',
+    path: ROUTES.MAKE_TEN,
+    difficulty: 'medium',
+    isActive: true,
+  },
 ];
 
 export default function Home() {
