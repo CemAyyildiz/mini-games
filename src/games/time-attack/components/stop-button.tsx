@@ -18,7 +18,7 @@ export default function StopButton({
 }: StopButtonProps) {
   return (
     <div className="flex gap-4 justify-center">
-      {!isRunning && (
+      {!isRunning && !canReset && (
         <Button
           onClick={onStart}
           size="lg"
@@ -49,7 +49,7 @@ export default function StopButton({
           className="text-xs uppercase tracking-widest"
         >
           <RotateCcw className="mr-2 h-5 w-5" />
-          ↻ RESET
+          ↻ NEW GAME
         </Button>
       )}
     </div>

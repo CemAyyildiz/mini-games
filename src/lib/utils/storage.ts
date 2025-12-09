@@ -7,6 +7,8 @@ export const StorageKeys = {
   GAME_STATE: `${STORAGE_PREFIX}_game_state`,
   HIGH_SCORES: `${STORAGE_PREFIX}_high_scores`,
   SETTINGS: `${STORAGE_PREFIX}_settings`,
+  USERNAME: `${STORAGE_PREFIX}_username`,
+  LEADERBOARD: `${STORAGE_PREFIX}_leaderboard`,
 } as const;
 
 export function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -43,4 +45,50 @@ export function clearAllStorage(): void {
   } catch (error) {
     console.error('Error clearing localStorage:', error);
   }
+}
+
+// Username management
+export function getUsername(): string | null {
+  return localStorage.getItem(StorageKeys.USERNAME);
+}
+
+export function setUsername(username: string): void {
+  localStorage.setItem(StorageKeys.USERNAME, username);
+}
+
+// Leaderboard management
+export function getLeaderboard(): LeaderboardEntry[] {
+  const data = localStorage.getItem(StorageKeys.LEADERBOARD);
+  return data ? JSON.parse(data) : [];
+}
+
+export function saveScore(gameId: string, score: number, username: string, metadata?: Record<string, unknown>): void {
+  const leaderboard = getLeaderboard();
+  
+  const entry: LeaderboardEntry = {
+    id: Date.now().toString(),
+    username,
+    gameId,
+    score,
+    timestamp: Date.now(),
+    rank: 0,
+    metadata,
+  };
+
+  leaderboard.push(entry);
+  localStorage.setItem(StorageKeys.LEADERBOARD, JSON.stringify(leaderboard));
+}
+
+export function getGameLeaderboard(gameId: string, limit: number = 10): LeaderboardEntry[] {
+  const allScores = getLeaderboard();
+  
+  return allScores
+    .filter(entry => entry.gameId === gameId)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((entry, index) => ({ ...entry, rank: index + 1 }));
+}
+
+export function clearLeaderboard(): void {
+  localStorage.removeItem(StorageKeys.LEADERBOARD);
 }
