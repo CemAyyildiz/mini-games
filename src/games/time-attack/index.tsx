@@ -15,7 +15,7 @@ export default function TimeAttack() {
   const [lastSavedAccuracy, setLastSavedAccuracy] = useState(0);
   
   const { isRunning, currentTime, start, stop, reset } = useChronometer();
-  const { results, bestAccuracy, checkAccuracy, resetResults } = useAccuracyCheck();
+  const { results, checkAccuracy, resetResults } = useAccuracyCheck();
 
   // Save score when accuracy is achieved
   useEffect(() => {
@@ -77,11 +77,7 @@ export default function TimeAttack() {
         canReset={results.length > 0}
       />
 
-      <ResultPanel
-        result={lastResult}
-        bestAccuracy={bestAccuracy}
-        attempts={results.length}
-      />
+      <ResultPanel result={lastResult} />
 
       <GameLeaderboard gameId={GAME_IDS.TIME_ATTACK} currentScore={lastResult?.accuracy ? Math.round(lastResult.accuracy * 100) : undefined} />
     </div>
