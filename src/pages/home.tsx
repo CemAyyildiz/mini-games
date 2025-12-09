@@ -5,8 +5,8 @@ import { ROUTES } from '@/lib/constants/routes';
 const GAMES: BaseGame[] = [
   {
     id: GAME_IDS.WHEEL_OF_FORTUNE,
-    name: 'Çark-ı Felek',
-    description: 'Çarkı çevir, şansını dene! Farklı ödüller kazanma şansını yakala.',
+    name: 'Wheel of Fortune',
+    description: 'Spin the wheel and try your luck! Win different prizes.',
     icon: '🎡',
     path: ROUTES.WHEEL_OF_FORTUNE,
     difficulty: 'easy',
@@ -14,8 +14,8 @@ const GAMES: BaseGame[] = [
   },
   {
     id: GAME_IDS.TIME_ATTACK,
-    name: 'Zaman Saldırısı',
-    description: 'Kronometreyi tam 10.00 saniyede durdurabilir misin? Reflekslerini test et!',
+    name: 'Time Attack',
+    description: 'Can you stop the chronometer at exactly 10.00 seconds? Test your reflexes!',
     icon: '⏱️',
     path: ROUTES.TIME_ATTACK,
     difficulty: 'medium',

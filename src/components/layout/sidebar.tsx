@@ -16,22 +16,22 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   {
-    label: 'Ana Sayfa',
+    label: 'Home',
     path: ROUTES.HOME,
     icon: <Home className="h-5 w-5" />,
   },
   {
-    label: 'Çark-ı Felek',
+    label: 'Wheel of Fortune',
     path: ROUTES.WHEEL_OF_FORTUNE,
     icon: <Gamepad2 className="h-5 w-5" />,
   },
   {
-    label: 'Zaman Saldırısı',
+    label: 'Time Attack',
     path: ROUTES.TIME_ATTACK,
     icon: <Timer className="h-5 w-5" />,
   },
   {
-    label: 'Lider Tablosu',
+    label: 'Leaderboard',
     path: ROUTES.LEADERBOARD,
     icon: <Trophy className="h-5 w-5" />,
   },

@@ -5,7 +5,7 @@ import { Trophy, Medal, Award } from 'lucide-react';
 const MOCK_LEADERBOARD: LeaderboardEntry[] = [
   {
     id: '1',
-    username: 'Oyuncu1',
+    username: 'Player1',
     gameId: 'wheel-of-fortune',
     score: 15000,
     timestamp: Date.now() - 3600000,
@@ -13,7 +13,7 @@ const MOCK_LEADERBOARD: LeaderboardEntry[] = [
   },
   {
     id: '2',
-    username: 'Oyuncu2',
+    username: 'Player2',
     gameId: 'time-attack',
     score: 9800,
     timestamp: Date.now() - 7200000,
@@ -21,7 +21,7 @@ const MOCK_LEADERBOARD: LeaderboardEntry[] = [
   },
   {
     id: '3',
-    username: 'Oyuncu3',
+    username: 'Player3',
     gameId: 'wheel-of-fortune',
     score: 12500,
     timestamp: Date.now() - 10800000,

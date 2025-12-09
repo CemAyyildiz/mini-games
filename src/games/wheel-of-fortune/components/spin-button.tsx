@@ -14,7 +14,7 @@ export default function SpinButton({ onSpin, isSpinning }: SpinButtonProps) {
         size="lg"
         className="min-w-[250px] text-xs uppercase tracking-widest animate-pulse"
       >
-        {isSpinning ? '►► ÇEVRİLİYOR... ◄◄' : '▶ ÇARKI ÇEVİR!'}
+        {isSpinning ? '►► SPINNING... ◄◄' : '▶ SPIN THE WHEEL!'}
       </Button>
     </div>
   );

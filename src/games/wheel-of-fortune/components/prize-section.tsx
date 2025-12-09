@@ -11,7 +11,7 @@ export default function PrizeSection({ totalWinnings, spinCount }: PrizeSectionP
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <Card className="border-4 border-primary">
         <CardHeader>
-          <CardTitle className="text-xs uppercase tracking-widest">◆ TOPLAM KAZANÇ ◆</CardTitle>
+          <CardTitle className="text-xs uppercase tracking-widest">◆ TOTAL WINNINGS ◆</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold text-primary animate-pulse">
@@ -22,7 +22,7 @@ export default function PrizeSection({ totalWinnings, spinCount }: PrizeSectionP
 
       <Card className="border-4 border-secondary">
         <CardHeader>
-          <CardTitle className="text-xs uppercase tracking-widest">◆ ÇEVİRME SAYISI ◆</CardTitle>
+          <CardTitle className="text-xs uppercase tracking-widest">◆ SPIN COUNT ◆</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold text-primary">

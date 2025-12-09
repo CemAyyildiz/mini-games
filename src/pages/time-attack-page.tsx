@@ -4,8 +4,8 @@ import TimeAttack from '@/games/time-attack';
 export default function TimeAttackPage() {
   return (
     <GameLayout
-      title="Zaman Saldırısı"
-      description="Kronometreyi tam 10.00 saniyede durdur!"
+      title="Time Attack"
+      description="Stop the chronometer at exactly 10.00 seconds!"
     >
       <TimeAttack />
     </GameLayout>

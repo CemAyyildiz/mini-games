@@ -4,8 +4,8 @@ import WheelOfFortune from '@/games/wheel-of-fortune';
 export default function WheelOfFortunePage() {
   return (
     <GameLayout
-      title="Çark-ı Felek"
-      description="Çarkı çevir ve ödülünü kazan!"
+      title="Wheel of Fortune"
+      description="Spin the wheel and win your prize!"
     >
       <WheelOfFortune />
     </GameLayout>
