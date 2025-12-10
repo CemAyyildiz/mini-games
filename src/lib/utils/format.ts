@@ -1,9 +1,8 @@
 // Format utilities
 
 export function formatTime(milliseconds: number): string {
-  const seconds = Math.floor(milliseconds / 1000);
-  const ms = milliseconds % 1000;
-  return `${seconds}.${ms.toString().padStart(3, '0').slice(0, 2)}`;
+  const seconds = (milliseconds / 1000).toFixed(2);
+  return seconds;
 }
 
 export function formatScore(score: number): string {
