@@ -11,6 +11,7 @@ export function useMakeTen() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState<{ row: number; col: number } | null>(null);
 
   // Timer
   useEffect(() => {
@@ -32,21 +33,13 @@ export function useMakeTen() {
 
   const selectCell = useCallback(
     (row: number, col: number) => {
-      if (!isPlaying || gameOver || !isDragging) return;
+      if (!isPlaying || gameOver || !isDragging || !dragStart) return;
 
-      // If this is the first cell, just add it
-      if (selectedCells.length === 0) {
-        setSelectedCells([{ row, col }]);
-        return;
-      }
-
-      const firstCell = selectedCells[0];
-      
-      // Calculate rectangle bounds
-      const minRow = Math.min(firstCell.row, row);
-      const maxRow = Math.max(firstCell.row, row);
-      const minCol = Math.min(firstCell.col, col);
-      const maxCol = Math.max(firstCell.col, col);
+      // Calculate rectangle bounds from dragStart to current cell
+      const minRow = Math.min(dragStart.row, row);
+      const maxRow = Math.max(dragStart.row, row);
+      const minCol = Math.min(dragStart.col, col);
+      const maxCol = Math.max(dragStart.col, col);
 
       // Create all cells in the rectangle
       const rectangleCells: { row: number; col: number }[] = [];
@@ -60,12 +53,13 @@ export function useMakeTen() {
 
       setSelectedCells(rectangleCells);
     },
-    [selectedCells, isPlaying, gameOver, isDragging, grid]
+    [dragStart, isPlaying, gameOver, isDragging, grid]
   );
 
   const startDrag = useCallback((row: number, col: number) => {
     if (!isPlaying || gameOver) return;
     setIsDragging(true);
+    setDragStart({ row, col });
     setSelectedCells([{ row, col }]);
   }, [isPlaying, gameOver]);
 
@@ -73,6 +67,7 @@ export function useMakeTen() {
     if (!isPlaying || gameOver || !isDragging) return;
     
     setIsDragging(false);
+    setDragStart(null);
 
     // Calculate sum
     const currentSum = selectedCells.reduce(
