@@ -84,7 +84,14 @@ export function getGameLeaderboard(gameId: string, limit: number = 10): Leaderbo
   
   return allScores
     .filter(entry => entry.gameId === gameId)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      // For TIME_ATTACK, lower score (difference) is better
+      if (gameId === 'time-attack') {
+        return a.score - b.score;
+      }
+      // For other games, higher score is better
+      return b.score - a.score;
+    })
     .slice(0, limit)
     .map((entry, index) => ({ ...entry, rank: index + 1 }));
 }

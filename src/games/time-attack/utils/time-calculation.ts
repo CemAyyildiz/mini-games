@@ -4,9 +4,12 @@ import { TIME_ATTACK_CONFIG, TIME_ATTACK_ACCURACY_LEVELS } from '@/lib/constants
 
 export function calculateAccuracy(stoppedTime: number): number {
   const difference = Math.abs(stoppedTime - TIME_ATTACK_CONFIG.TARGET_TIME);
-  const maxDifference = TIME_ATTACK_CONFIG.TARGET_TIME;
-  const accuracy = Math.max(0, 100 - (difference / maxDifference) * 100);
+  const accuracy = Math.max(0, 100 - (difference * 10));
   return Number(accuracy.toFixed(2));
+}
+
+export function calculateScore(stoppedTime: number): number {
+  return calculateAccuracy(stoppedTime);
 }
 
 export function calculateDifference(stoppedTime: number): number {

@@ -104,7 +104,7 @@ export default function GameLeaderboard({ gameId, currentScore }: GameLeaderboar
                       {formatTime(entry.metadata?.stoppedTime || 0)}
                     </div>
                     <div className="text-[10px] text-muted-foreground">
-                      {(entry.score / 100).toFixed(2)}% accuracy
+                      Δ {((entry.metadata?.difference || 0) / 1000).toFixed(2)}s
                     </div>
                   </>
                 ) : (

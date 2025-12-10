@@ -12,26 +12,26 @@ import { getUsername, saveScore } from '@/lib/utils/storage';
 export default function TimeAttack() {
   const [lastResult, setLastResult] = useState<TimeAttackResult | null>(null);
   const [hasStarted, setHasStarted] = useState(false);
-  const [lastSavedAccuracy, setLastSavedAccuracy] = useState(0);
+  const [scoreSaved, setScoreSaved] = useState(false);
   
   const { isRunning, currentTime, start, stop, reset } = useChronometer();
   const { results, checkAccuracy, resetResults } = useAccuracyCheck();
 
-  // Save score when accuracy is achieved
+  // Save score when game stops
   useEffect(() => {
-    if (lastResult && lastResult.accuracy > 0 && lastResult.accuracy !== lastSavedAccuracy) {
+    if (lastResult && !scoreSaved) {
       const username = getUsername();
       if (username) {
-        // Convert accuracy percentage to score (0-100 scale to 0-10000 scale)
-        const score = Math.round(lastResult.accuracy * 100);
-        saveScore(GAME_IDS.TIME_ATTACK, score, username, {
+        // Save difference as score IN SECONDS (smaller difference = better score)
+        const scoreDifference = Math.abs(lastResult.difference) / 1000;
+        saveScore(GAME_IDS.TIME_ATTACK, scoreDifference, username, {
           stoppedTime: lastResult.stoppedTime,
-          accuracy: lastResult.accuracy,
+          difference: lastResult.difference,
         });
-        setLastSavedAccuracy(lastResult.accuracy);
+        setScoreSaved(true);
       }
     }
-  }, [lastResult, lastSavedAccuracy]);
+  }, [lastResult, scoreSaved]);
 
   const handleStartGame = () => {
     setHasStarted(true);
@@ -39,6 +39,7 @@ export default function TimeAttack() {
 
   const handleStart = () => {
     setLastResult(null);
+    setScoreSaved(false);
     start();
   };
 
@@ -53,7 +54,7 @@ export default function TimeAttack() {
     resetResults();
     setLastResult(null);
     setHasStarted(false);
-    setLastSavedAccuracy(0);
+    setScoreSaved(false);
   };
 
   if (!hasStarted) {
@@ -79,7 +80,7 @@ export default function TimeAttack() {
 
       <ResultPanel result={lastResult} />
 
-      <GameLeaderboard gameId={GAME_IDS.TIME_ATTACK} currentScore={lastResult?.accuracy ? Math.round(lastResult.accuracy * 100) : undefined} />
+      <GameLeaderboard gameId={GAME_IDS.TIME_ATTACK} currentScore={lastResult?.difference} />
     </div>
   );
 }

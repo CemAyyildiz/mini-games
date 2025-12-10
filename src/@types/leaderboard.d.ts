@@ -9,7 +9,7 @@ interface LeaderboardEntry {
   rank: number;
   metadata?: {
     stoppedTime?: number;
-    accuracy?: number;
+    difference?: number;
     [key: string]: unknown;
   };
 }
