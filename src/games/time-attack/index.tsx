@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ChronometerDisplay from './components/chronometer-display';
 import StopButton from './components/stop-button';
 import ResultPanel from './components/result-panel';
@@ -33,20 +33,51 @@ export default function TimeAttack() {
     }
   }, [lastResult, scoreSaved]);
 
-  const handleStartGame = () => {
-    setHasStarted(true);
-  };
-
-  const handleStart = () => {
+  const handleStart = useCallback(() => {
     setLastResult(null);
     setScoreSaved(false);
     start();
-  };
+  }, [start]);
 
-  const handleStop = () => {
+  const handleStop = useCallback(() => {
     const stoppedTime = stop();
     const result = checkAccuracy(stoppedTime);
     setLastResult(result);
+  }, [stop, checkAccuracy]);
+
+  // Keyboard shortcuts for Space and Enter
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // Don't trigger if user is typing in an input field
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {
+        return;
+      }
+
+      // Space or Enter to start/stop
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        
+        if (isRunning) {
+          // Stop the game
+          handleStop();
+        } else if (results.length === 0) {
+          // Start the game (only if no results yet, meaning it's a fresh start)
+          handleStart();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [hasStarted, isRunning, results.length, handleStart, handleStop]);
+
+  const handleStartGame = () => {
+    setHasStarted(true);
   };
 
   const handleReset = () => {

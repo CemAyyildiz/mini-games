@@ -39,7 +39,18 @@ export default function UsernameDialog({ onStart }: UsernameDialogProps) {
         <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
           PLAYER
         </p>
-        <p className="text-xl font-bold text-primary uppercase tracking-wider">
+        <p 
+          className="text-xl font-bold text-primary uppercase tracking-wider cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={handleChangeUsername}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleChangeUsername();
+            }
+          }}
+        >
           {username}
         </p>
         <div className="flex gap-3 justify-center">

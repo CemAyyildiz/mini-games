@@ -47,7 +47,7 @@ export const TIME_ATTACK_CONFIG = {
 } as const;
 
 export const TIME_ATTACK_ACCURACY_LEVELS = {
-  PERFECT: { threshold: 10, label: 'Perfect!', color: '#10B981' },
+  PERFECT: { threshold: 10, label: 'Perfect!', color: '#770eaa' },
   EXCELLENT: { threshold: 50, label: 'Excellent!', color: '#3B82F6' },
   GOOD: { threshold: 100, label: 'Good!', color: '#8B5CF6' },
   FAIR: { threshold: 200, label: 'Fair', color: '#F59E0B' },

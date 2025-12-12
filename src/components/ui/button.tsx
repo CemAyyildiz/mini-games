@@ -9,13 +9,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:translate-x-1 hover:translate-y-1 hover:shadow-none',
+        default: 'bg-primary text-primary-foreground',
         destructive:
-          'bg-destructive text-destructive-foreground hover:translate-x-1 hover:translate-y-1 hover:shadow-none',
+          'bg-destructive text-destructive-foreground',
         outline:
           'border-4 border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary:
-          'bg-secondary text-secondary-foreground hover:translate-x-1 hover:translate-y-1 hover:shadow-none',
+          'bg-secondary text-secondary-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
       },
@@ -40,12 +40,24 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, onKeyDown, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
+    
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      // Ensure Space key triggers button click (native button behavior, but explicit for clarity)
+      if (e.key === ' ' && !props.disabled) {
+        e.preventDefault();
+        // Trigger click event which will call onClick
+        (e.currentTarget as HTMLButtonElement).click();
+      }
+      onKeyDown?.(e);
+    };
+    
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        onKeyDown={handleKeyDown}
         {...props}
       />
     );
