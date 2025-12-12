@@ -15,9 +15,9 @@ const DIFFICULTY_COLORS: Record<GameDifficulty, string> = {
 };
 
 const DIFFICULTY_LABELS: Record<GameDifficulty, string> = {
-  easy: 'Kolay',
-  medium: 'Orta',
-  hard: 'Zor',
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard',
 };
 
 export default function GameCard({ game, className }: GameCardProps) {
