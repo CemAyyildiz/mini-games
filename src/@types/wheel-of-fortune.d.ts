@@ -1,11 +1,14 @@
 // Wheel of Fortune specific type definitions
 
-declare interface WheelSegment {
+declare interface WheelSegmentBase {
   id: string;
   label: string;
   color: string;
   probability: number;
   prizeValue: number;
+}
+
+declare interface WheelSegment extends WheelSegmentBase {
   angle: number;
 }
 

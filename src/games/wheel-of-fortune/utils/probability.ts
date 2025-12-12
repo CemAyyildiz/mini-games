@@ -14,7 +14,7 @@ export function selectPrizeByProbability(segments: WheelSegment[]): WheelSegment
   return segments[segments.length - 1];
 }
 
-export function calculateSegmentAngles(segments: WheelSegment[]): WheelSegment[] {
+export function calculateSegmentAngles(segments: readonly WheelSegmentBase[]): WheelSegment[] {
   const segmentAngle = 360 / segments.length;
   
   return segments.map((segment, index) => ({

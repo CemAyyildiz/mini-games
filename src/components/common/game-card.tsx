@@ -8,13 +8,13 @@ interface GameCardProps {
   className?: string;
 }
 
-const DIFFICULTY_COLORS = {
+const DIFFICULTY_COLORS: Record<GameDifficulty, string> = {
   easy: 'bg-green-500',
   medium: 'bg-yellow-500',
   hard: 'bg-red-500',
 };
 
-const DIFFICULTY_LABELS = {
+const DIFFICULTY_LABELS: Record<GameDifficulty, string> = {
   easy: 'Kolay',
   medium: 'Orta',
   hard: 'Zor',

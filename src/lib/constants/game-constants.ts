@@ -29,14 +29,14 @@ export const WHEEL_CONFIG = {
   INITIAL_VELOCITY: 0.5,
 } as const;
 
-export const WHEEL_SEGMENTS = [
+export const WHEEL_SEGMENTS: readonly WheelSegmentBase[] = [
   { id: '1', label: '100', color: '#FF6B6B', probability: 0.3, prizeValue: 100 },
   { id: '2', label: '200', color: '#4ECDC4', probability: 0.25, prizeValue: 200 },
   { id: '3', label: '500', color: '#45B7D1', probability: 0.2, prizeValue: 500 },
   { id: '4', label: '1000', color: '#FFA07A', probability: 0.15, prizeValue: 1000 },
   { id: '5', label: '2000', color: '#98D8C8', probability: 0.07, prizeValue: 2000 },
   { id: '6', label: '5000', color: '#FFD93D', probability: 0.03, prizeValue: 5000 },
-] as const;
+];
 
 // Time Attack constants
 export const TIME_ATTACK_CONFIG = {

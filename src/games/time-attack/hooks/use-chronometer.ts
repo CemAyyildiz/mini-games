@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { TIME_ATTACK_CONFIG } from '@/lib/constants/game-constants';
 
 export function useChronometer() {
   const [isRunning, setIsRunning] = useState(false);

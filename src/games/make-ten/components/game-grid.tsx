@@ -56,11 +56,6 @@ export default function GameGrid({
     return bounds && col === bounds.maxCol && isCellSelected(row, col);
   };
 
-  const currentSum = selectedCells.reduce(
-    (sum, cell) => sum + grid[cell.row][cell.col],
-    0
-  );
-
   return (
     <div className="flex justify-center">
       <div 

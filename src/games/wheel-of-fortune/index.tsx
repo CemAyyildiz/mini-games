@@ -10,7 +10,7 @@ export default function WheelOfFortune() {
   const [totalWinnings, setTotalWinnings] = useState(0);
   const [spinCount, setSpinCount] = useState(0);
 
-  const segments = calculateSegmentAngles([...WHEEL_SEGMENTS]);
+  const segments = calculateSegmentAngles(WHEEL_SEGMENTS);
 
   const handleSpinComplete = (result: WheelSpinResult) => {
     setTotalWinnings((prev) => prev + result.segment.prizeValue);

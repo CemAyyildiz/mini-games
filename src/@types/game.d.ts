@@ -1,5 +1,15 @@
 // Game-related global types
 
+interface BaseGame {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  path: string;
+  difficulty: GameDifficulty;
+  isActive: boolean;
+}
+
 interface Game {
   id: string;
   name: string;
